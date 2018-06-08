@@ -7,7 +7,8 @@ import {
   EvenRouteActivator,
   EventListResolver,
   CreateSessionCompononet,
-  SessionListComponent
+  SessionListComponent,
+  DurationPipe
 } from "./events/index";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -31,7 +32,8 @@ import { CollapsibleWellComponent } from "./common/collapsible-well.component";
     Error404Component,
     CreateSessionCompononet,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
