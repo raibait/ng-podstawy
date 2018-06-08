@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
 import { FormControl, FormGroup, Validator, Validators } from "@angular/forms";
 import { ISession } from "../shared/index";
 
 @Component({
+  selector: "create-session",
   templateUrl: "./create-session.component.html",
   styles: [
     `
@@ -32,6 +33,8 @@ import { ISession } from "../shared/index";
   ]
 })
 export class CreateSessionCompononet {
+  @Output() cancelAddSession = new EventEmitter();
+  @Output() saveNewSession = new EventEmitter();
   newSessionForm: FormGroup;
   name: FormControl;
   presenter: FormControl;
@@ -69,7 +72,7 @@ export class CreateSessionCompononet {
       abstract: formValues.abstract,
       voters: []
     };
-    console.log(session);
+    this.saveNewSession.emit(session);
   }
 
   private restrictedWords(words) {
@@ -83,5 +86,8 @@ export class CreateSessionCompononet {
         ? { restrictedWords: invalidWords.join(", ") }
         : null;
     };
+  }
+  cancel() {
+    this.cancelAddSession.emit();
   }
 }
