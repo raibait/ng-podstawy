@@ -5,7 +5,8 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EvenRouteActivator,
-  EventListResolver
+  EventListResolver,
+  CreateSessionCompononet
 } from "./events/index";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     EventsListComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionCompononet
   ],
   imports: [
     BrowserModule,
