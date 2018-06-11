@@ -8,7 +8,9 @@ import {
   EventListResolver,
   CreateSessionCompononet,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  VoterService
 } from "./events/index";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -19,8 +21,17 @@ import { appRoutes } from "./routes";
 import { Error404Component } from "./errors/404.component";
 import { AuthService } from "./user/auth.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CollapsibleWellComponent } from "./common/collapsible-well.component";
+import {
+  JQ_TOKEN,
+  TOASTR_TOKEN,
+  Toastr,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from "./common/index";
 
+let toastr: Toastr = window["toastr"];
+let jQuery = window["$"];
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +44,10 @@ import { CollapsibleWellComponent } from "./common/collapsible-well.component";
     CreateSessionCompononet,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +61,9 @@ import { CollapsibleWellComponent } from "./common/collapsible-well.component";
     EvenRouteActivator,
     EventListResolver,
     AuthService,
+    VoterService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     { provide: "canDeactivateCreateEvent", useValue: checkDirtyState }
   ],
   bootstrap: [AppComponent]
