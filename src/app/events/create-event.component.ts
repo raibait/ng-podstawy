@@ -31,7 +31,7 @@ import { EventService } from "./shared/event.service";
 export class CreateEventComponent {
   newEvent;
   isDirty: boolean = true;
-  constructor(private router: Router, private eventService: EventService) {}
+  constructor(private router: Router, private eventService: EventService) { }
   cancel() {
     this.router.navigate(["events"]);
   }

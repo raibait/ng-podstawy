@@ -10,7 +10,8 @@ import {
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
-  VoterService
+  VoterService,
+  LocationValidator
 } from "./events/index";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -27,7 +28,7 @@ import {
   Toastr,
   CollapsibleWellComponent,
   SimpleModalComponent,
-  ModalTriggerDirective
+  ModalTriggerDirective,
 } from "./common/index";
 
 let toastr: Toastr = window["toastr"];
@@ -47,7 +48,8 @@ let jQuery = window["$"];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,7 @@ let jQuery = window["$"];
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
