@@ -1,7 +1,7 @@
 <h1>Login</h1>
 <hr>
 <div class="col-md-4">
-  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" autocomplete="off" novalidate>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
     <div class="form-group">
       <label for="userName">User Name:</label>
       <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
@@ -16,6 +16,7 @@
     <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false ">
       <button type="submit " [disabled]="loginForm.invalid " class="btn btn-primary ">Login</button>
     </span>
-    <button type="button " (click)="cancel() " class="btn btn-default ">Cancel</button>
+    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
   </form>
+  <div *ngIf="loginInvalid" class="alert alert-danger">Invalid login info</div>
 </div>

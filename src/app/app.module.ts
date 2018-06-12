@@ -4,14 +4,14 @@ import {
   eventThumbnailComponent,
   EventDetailsComponent,
   CreateEventComponent,
-  EvenRouteActivator,
   EventListResolver,
   CreateSessionCompononet,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from "./events/index";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -21,6 +21,7 @@ import { NavBarComponent } from "./nav/navbar.component";
 import { appRoutes } from "./routes";
 import { Error404Component } from "./errors/404.component";
 import { AuthService } from "./user/auth.service";
+import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
   JQ_TOKEN,
@@ -28,7 +29,7 @@ import {
   Toastr,
   CollapsibleWellComponent,
   SimpleModalComponent,
-  ModalTriggerDirective,
+  ModalTriggerDirective
 } from "./common/index";
 
 let toastr: Toastr = window["toastr"];
@@ -55,12 +56,13 @@ let jQuery = window["$"];
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
 
   providers: [
     EventService,
-    EvenRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,
@@ -70,7 +72,7 @@ let jQuery = window["$"];
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty)
