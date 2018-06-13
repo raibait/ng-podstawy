@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 import {
   EventsListComponent,
   EventDetailsComponent,
@@ -6,40 +6,40 @@ import {
   EventListResolver,
   CreateSessionCompononet,
   EventResolver
-} from "./events/index";
-import { Error404Component } from "./errors/404.component";
+} from './events/index';
+import { Error404Component } from './errors/404.component';
 
 export const appRoutes: Routes = [
   {
-    path: "events/new",
+    path: 'events/new',
     component: CreateEventComponent,
-    canDeactivate: ["canDeactivateCreateEvent"]
+    canDeactivate: ['canDeactivateCreateEvent']
   },
   {
-    path: "events",
+    path: 'events',
     component: EventsListComponent,
-    resolve: { ["events"]: EventListResolver }
+    resolve: { ['events']: EventListResolver }
   },
   {
-    path: "events/:id",
+    path: 'events/:id',
     component: EventDetailsComponent,
     resolve: { event: EventResolver }
   },
   {
-    path: "events/session/new",
+    path: 'events/session/new',
     component: CreateSessionCompononet
   },
   {
-    path: "404",
+    path: '404',
     component: Error404Component
   },
   {
-    path: "",
-    redirectTo: "events",
-    pathMatch: "full"
+    path: '',
+    redirectTo: 'events',
+    pathMatch: 'full'
   },
   {
-    path: "user",
-    loadChildren: "./user/user.module#UserModule"
+    path: 'user',
+    loadChildren: './user/user.module#UserModule'
   }
 ];
